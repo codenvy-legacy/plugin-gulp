@@ -8,10 +8,10 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.plugin.gulp.runner;
+package org.eclipse.che.plugin.gulp.runner;
 
-import com.codenvy.api.core.util.DownloadPlugin;
-import com.codenvy.api.runner.internal.DeploymentSources;
+import org.eclipse.che.api.core.util.DownloadPlugin;
+import org.eclipse.che.api.runner.internal.DeploymentSources;
 
 import java.io.File;
 import java.io.IOException;

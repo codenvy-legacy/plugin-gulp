@@ -8,19 +8,20 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.plugin.gulp.runner;
+package org.eclipse.che.plugin.gulp.runner;
 
-import com.codenvy.api.builder.BuildStatus;
-import com.codenvy.api.builder.dto.BuildTaskDescriptor;
-import com.codenvy.api.core.ConflictException;
-import com.codenvy.api.core.ForbiddenException;
-import com.codenvy.api.core.NotFoundException;
-import com.codenvy.api.core.ServerException;
-import com.codenvy.api.core.UnauthorizedException;
-import com.codenvy.api.core.rest.HttpJsonHelper;
-import com.codenvy.api.core.rest.shared.dto.Link;
-import com.codenvy.api.runner.RunnerException;
-import com.codenvy.dto.server.DtoFactory;
+import org.eclipse.che.api.builder.BuildStatus;
+import org.eclipse.che.api.builder.dto.BuildTaskDescriptor;
+import org.eclipse.che.api.builder.internal.Constants;
+import org.eclipse.che.api.core.ConflictException;
+import org.eclipse.che.api.core.ForbiddenException;
+import org.eclipse.che.api.core.NotFoundException;
+import org.eclipse.che.api.core.ServerException;
+import org.eclipse.che.api.core.UnauthorizedException;
+import org.eclipse.che.api.core.rest.HttpJsonHelper;
+import org.eclipse.che.api.core.rest.shared.dto.Link;
+import org.eclipse.che.api.runner.RunnerException;
+import org.eclipse.che.dto.server.DtoFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +60,7 @@ public class RemoteBuilderRunnable implements Callable<String> {
     @Override
     public String call() throws Exception {
         boolean done = false;
-        final Link buildStatusLink = getLink(com.codenvy.api.builder.internal.Constants.LINK_REL_GET_STATUS,
+        final Link buildStatusLink = getLink(Constants.LINK_REL_GET_STATUS,
                                              buildTaskDescriptor.getLinks());
 
         while (!done) {
@@ -81,7 +82,7 @@ public class RemoteBuilderRunnable implements Callable<String> {
 
             switch (buildTaskDescriptor.getStatus()) {
                 case SUCCESSFUL:
-                    final Link downloadLink = getLink(com.codenvy.api.builder.internal.Constants.LINK_REL_DOWNLOAD_RESULT,
+                    final Link downloadLink = getLink(Constants.LINK_REL_DOWNLOAD_RESULT,
                                                       buildTaskDescriptor.getLinks());
                     if (downloadLink == null) {
                         throw new RunnerException("Unable start application. Application build is successful but there " +
@@ -91,7 +92,7 @@ public class RemoteBuilderRunnable implements Callable<String> {
                 case CANCELLED:
                 case FAILED:
                     String msg = "Unable start application. Build of application is failed or cancelled.";
-                    final Link logLink = getLink(com.codenvy.api.builder.internal.Constants.LINK_REL_VIEW_LOG,
+                    final Link logLink = getLink(Constants.LINK_REL_VIEW_LOG,
                                                  buildTaskDescriptor.getLinks());
                     if (logLink != null) {
                         msg += (" Build logs: " + logLink.getHref());
@@ -108,7 +109,7 @@ public class RemoteBuilderRunnable implements Callable<String> {
 
 
     private boolean tryCancelBuild(BuildTaskDescriptor buildDescriptor) {
-        final Link cancelLink = getLink(com.codenvy.api.builder.internal.Constants.LINK_REL_CANCEL, buildDescriptor.getLinks());
+        final Link cancelLink = getLink(Constants.LINK_REL_CANCEL, buildDescriptor.getLinks());
         if (cancelLink == null) {
             LOG.error("Can't cancel build process since cancel link is not available.");
             return false;

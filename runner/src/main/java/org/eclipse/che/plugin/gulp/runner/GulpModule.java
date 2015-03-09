@@ -8,10 +8,10 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.plugin.gulp.runner;
+package org.eclipse.che.plugin.gulp.runner;
 
-import com.codenvy.api.runner.internal.Runner;
-import com.codenvy.inject.DynaModule;
+import org.eclipse.che.api.runner.internal.Runner;
+import org.eclipse.che.inject.DynaModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
 

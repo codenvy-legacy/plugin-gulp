@@ -8,36 +8,36 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.plugin.gulp.runner;
+package org.eclipse.che.plugin.gulp.runner;
 
-import com.codenvy.api.builder.BuilderService;
-import com.codenvy.api.builder.dto.BuildOptions;
-import com.codenvy.api.builder.dto.BuildTaskDescriptor;
-import com.codenvy.api.core.ConflictException;
-import com.codenvy.api.core.ForbiddenException;
-import com.codenvy.api.core.NotFoundException;
-import com.codenvy.api.core.ServerException;
-import com.codenvy.api.core.UnauthorizedException;
-import com.codenvy.api.core.notification.EventService;
-import com.codenvy.api.core.rest.HttpJsonHelper;
-import com.codenvy.api.core.rest.RemoteServiceDescriptor;
-import com.codenvy.api.core.rest.shared.dto.Link;
-import com.codenvy.api.core.util.DownloadPlugin;
-import com.codenvy.api.core.util.HttpDownloadPlugin;
-import com.codenvy.api.project.server.ProjectEventService;
-import com.codenvy.api.project.shared.dto.RunnerEnvironment;
-import com.codenvy.api.runner.RunnerException;
-import com.codenvy.api.runner.dto.RunRequest;
-import com.codenvy.api.runner.internal.ApplicationProcess;
-import com.codenvy.api.runner.internal.Constants;
-import com.codenvy.api.runner.internal.DeploymentSources;
-import com.codenvy.api.runner.internal.ResourceAllocators;
-import com.codenvy.api.runner.internal.Runner;
-import com.codenvy.api.runner.internal.RunnerConfiguration;
-import com.codenvy.api.runner.internal.RunnerConfigurationFactory;
-import com.codenvy.commons.lang.Pair;
-import com.codenvy.commons.lang.ZipUtils;
-import com.codenvy.dto.server.DtoFactory;
+import org.eclipse.che.api.builder.BuilderService;
+import org.eclipse.che.api.builder.dto.BuildOptions;
+import org.eclipse.che.api.builder.dto.BuildTaskDescriptor;
+import org.eclipse.che.api.core.ConflictException;
+import org.eclipse.che.api.core.ForbiddenException;
+import org.eclipse.che.api.core.NotFoundException;
+import org.eclipse.che.api.core.ServerException;
+import org.eclipse.che.api.core.UnauthorizedException;
+import org.eclipse.che.api.core.notification.EventService;
+import org.eclipse.che.api.core.rest.HttpJsonHelper;
+import org.eclipse.che.api.core.rest.RemoteServiceDescriptor;
+import org.eclipse.che.api.core.rest.shared.dto.Link;
+import org.eclipse.che.api.core.util.DownloadPlugin;
+import org.eclipse.che.api.core.util.HttpDownloadPlugin;
+import org.eclipse.che.api.project.server.ProjectEventService;
+import org.eclipse.che.api.project.shared.dto.RunnerEnvironment;
+import org.eclipse.che.api.runner.RunnerException;
+import org.eclipse.che.api.runner.dto.RunRequest;
+import org.eclipse.che.api.runner.internal.ApplicationProcess;
+import org.eclipse.che.api.runner.internal.Constants;
+import org.eclipse.che.api.runner.internal.DeploymentSources;
+import org.eclipse.che.api.runner.internal.ResourceAllocators;
+import org.eclipse.che.api.runner.internal.Runner;
+import org.eclipse.che.api.runner.internal.RunnerConfiguration;
+import org.eclipse.che.api.runner.internal.RunnerConfigurationFactory;
+import org.eclipse.che.commons.lang.Pair;
+import org.eclipse.che.commons.lang.ZipUtils;
+import org.eclipse.che.dto.server.DtoFactory;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -180,7 +180,7 @@ public class GulpRunner extends Runner {
             // schedule build
             final BuildTaskDescriptor buildDescriptor;
             try {
-                final Link buildLink = builderService.getLink(com.codenvy.api.builder.internal.Constants.LINK_REL_BUILD);
+                final Link buildLink = builderService.getLink(org.eclipse.che.api.builder.internal.Constants.LINK_REL_BUILD);
                 if (buildLink == null) {
                     throw new RunnerException("Unable get URL for starting build of the application");
                 }
@@ -193,7 +193,7 @@ public class GulpRunner extends Runner {
             }
 
 
-            final Link buildStatusLink = getLink(com.codenvy.api.builder.internal.Constants.LINK_REL_GET_STATUS,
+            final Link buildStatusLink = getLink(org.eclipse.che.api.builder.internal.Constants.LINK_REL_GET_STATUS,
                                                  buildDescriptor.getLinks());
             if (buildStatusLink == null) {
                 throw new RunnerException("Invalid response from builder service. Unable get URL for checking build status");

@@ -8,17 +8,17 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.plugin.gulp.runner;
+package org.eclipse.che.plugin.gulp.runner;
 
-import com.codenvy.api.core.util.CommandLine;
-import com.codenvy.api.core.util.DownloadPlugin;
-import com.codenvy.api.core.util.HttpDownloadPlugin;
-import com.codenvy.api.project.server.ProjectEvent;
-import com.codenvy.api.project.server.ProjectEventListener;
-import com.codenvy.api.runner.RunnerException;
-import com.codenvy.api.runner.internal.ApplicationLogger;
-import com.codenvy.api.runner.internal.ApplicationProcess;
-import com.codenvy.api.runner.internal.DeploymentSources;
+import org.eclipse.che.api.core.util.CommandLine;
+import org.eclipse.che.api.core.util.DownloadPlugin;
+import org.eclipse.che.api.core.util.HttpDownloadPlugin;
+import org.eclipse.che.api.project.server.ProjectEvent;
+import org.eclipse.che.api.project.server.ProjectEventListener;
+import org.eclipse.che.api.runner.RunnerException;
+import org.eclipse.che.api.runner.internal.ApplicationLogger;
+import org.eclipse.che.api.runner.internal.ApplicationProcess;
+import org.eclipse.che.api.runner.internal.DeploymentSources;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

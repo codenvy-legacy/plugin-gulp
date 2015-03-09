@@ -8,10 +8,10 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.plugin.gulp.runner;
+package org.eclipse.che.plugin.gulp.runner;
 
-import com.codenvy.api.runner.dto.RunRequest;
-import com.codenvy.api.runner.internal.RunnerConfiguration;
+import org.eclipse.che.api.runner.dto.RunRequest;
+import org.eclipse.che.api.runner.internal.RunnerConfiguration;
 
 /**
  * Configuration for using Gulp as AngularJS runner.
